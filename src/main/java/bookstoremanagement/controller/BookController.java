@@ -9,9 +9,13 @@ public class BookController {
     public String home() {
         return "home";
     }
-
     @GetMapping("/registro")
     public String registroLibro() {
         return "registroLibro";
+    }
+
+    @GetMapping("/listar")
+    public String listarLibros() {
+        return "listarLibros";
     }
 }

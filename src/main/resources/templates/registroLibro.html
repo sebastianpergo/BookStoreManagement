@@ -9,42 +9,33 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Book Store</a>
+            <a class="navbar-brand" href="/">Book Store</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="/">Inicio</a>
-                    <a class="nav-link" href="registro">Nuevo</a>
-                    <a class="nav-link" href="#">Pricing</a>
-                    <a class="nav-link disabled">Disabled</a>
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" href="registro">Available Books</a>
+                    <a class="nav-link" href="listar">My Books</a>
                 </div>
             </div>
         </div>
     </nav>
-    <div class="container">
-        <h1>Registro de Libros</h1>
-        <form action="#" method="post">
+    <div class="container my-5 p-5" style="border: 1px solid black">
+        <form action="#" method="post" class="col-md-4 offset-md-4">
+            <h4>Registro de Libros</h4>
             <div class="mb-3">
                 <label for="titulo" class="form-label">Titulo</label>
-                <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo del libro">
+                <input type="text" class="form-control" id="titulo" name="title" placeholder="ex. El Señor de los Anillos">
             </div>
             <div class="mb-3">
                 <label for="autor" class="form-label">Autor</label>
-                <input type="text" class="form-control" id="autor" name="autor" placeholder="Autor del libro">
+                <input type="text" class="form-control" id="autor" name="author" placeholder="ex. John R. R. Tolkien">
             </div>
             <div class="mb-3">
-                <label for="editorial" class="form-label">Editorial</label>
-                <input type="text" class="form-control" id="editorial" name="editorial" placeholder="Editorial del libro">
-            </div>
-            <div class="mb-3">
-                <label for="precio" class="form-label">Precio</label>
-                <input type="text" class="form-control" id="precio" name="precio" placeholder="Precio del libro">
-            </div>
-            <div class="mb-3">
-                <label for="cantidad" class="form-label">Cantidad</label>
-                <input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad de libros">
+                <label for="editorial" class="form-label">Precio</label>
+                <input type="text" class="form-control" id="editorial" name="price" placeholder="20.000">
             </div>
             <button type="submit" class="btn btn-primary">Registrar</button>
         </form>

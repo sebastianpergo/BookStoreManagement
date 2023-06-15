@@ -1,2 +1,5 @@
-package bookstoremanagement.service;public class BookService {
+package bookstoremanagement.service;
+
+public class BookService {
+    
 }
