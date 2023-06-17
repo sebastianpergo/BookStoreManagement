@@ -5,9 +5,7 @@ import bookstoremanagement.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.awt.print.Book;
@@ -45,4 +43,9 @@ public class BookController {
         return service.getBooks();
     }
 
+    @RequestMapping("/delete/{id}")
+    public String deleteBook(@PathVariable ("id") Long idBook) {
+        service.delete(idBook);
+        return "redirect:/listar";
+     }
 }

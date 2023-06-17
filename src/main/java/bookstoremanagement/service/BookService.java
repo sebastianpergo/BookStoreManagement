@@ -22,4 +22,10 @@ public class BookService {
         return repo.findAll();
     }
 
+    public void delete(Long id) {
+        repo.deleteById(id);
+    }
+
+
+
 }
