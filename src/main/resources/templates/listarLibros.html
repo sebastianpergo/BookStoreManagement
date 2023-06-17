@@ -16,8 +16,9 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    <a class="nav-link" href="registro">Available Books</a>
-                    <a class="nav-link" href="listar">My Books</a>
+                    <a class="nav-link" href="registro">New</a>
+                    <a class="nav-link" href="listar">Available Books</a>
+                    <a class="nav-link" href="">My Books</a>
                 </div>
             </div>
         </div>
@@ -35,22 +36,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
+            <tr th:each="b  :${BookModel}">
+                <th scope="row"></th>
+                <td th:text="${b.idBook}"></td>
+                <td th:text="${b.title}"></td>
+                <td th:text="${b.author}"></td>
+                <td th:text="${bprice}"></td>
+                <td>
+                    <a class="btn btn-primary" href="" role="button">Editar</a>
+                    <a class="btn btn-danger" href="" role="button">Eliminar</a>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @Service
 public class BookService {
     @Autowired
@@ -14,6 +16,10 @@ public class BookService {
     // Save method
     public void save(BookModel book) {
         repo.save(book);
+    }
+
+    public List<BookModel> getBooks() {
+        return repo.findAll();
     }
 
 }
