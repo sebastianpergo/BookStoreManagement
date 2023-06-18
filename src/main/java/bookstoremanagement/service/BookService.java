@@ -13,15 +13,26 @@ public class BookService {
     @Autowired
     private BookRepository repo;
 
+    // Get book by id method
+    public BookModel  getBookById(Long id) {
+        return repo.findById(id).get();
+    }
+    // Get all method
+    public List<BookModel> getBooks() {
+        return repo.findAll();
+    }
+
     // Save method
     public void save(BookModel book) {
         repo.save(book);
     }
 
-    public List<BookModel> getBooks() {
-        return repo.findAll();
+    // Update method
+    public void update(Long id) {
+        repo.save(repo.findById(id).get());
     }
 
+    // Delete method
     public void delete(Long id) {
         repo.deleteById(id);
     }

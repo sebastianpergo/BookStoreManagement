@@ -23,36 +23,24 @@
             </div>
         </div>
     </nav>
-
-    <div class="container my-5">
-        <table class="table table-striped table-hover">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Titulo</th>
-                <th scope="col">Autor</th>
-                <th scope="col">Libroo</th>
-                <th scope="col">Acciones</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="b  :${BookModel}">
-                <th scope="row"></th>
-                <td th:text="${b.idBook}"></td>
-                <td th:text="${b.title}"></td>
-                <td th:text="${b.author}"></td>
-                <td th:text="${bprice}"></td>
-                <td>
-                    <a class="btn btn-primary" th:href="@{/edit/{id}(id=${b.idBook})}" role="button">Editar</a>
-                    <a class="btn btn-danger" th:href="@{/delete/{id}(id=${b.idBook})}" role="button">Eliminar</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="container my-5 p-5" style="border: 1px solid black">
+        <form action="/save" method="post" class="col-md-4 offset-md-4" th:object="${book}">
+            <h4>Registro de Libros</h4>
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Titulo</label>
+                <input type="text" class="form-control" id="titulo" name="title" placeholder="ex. El Señor de los Anillos" th:value="${book.title}">
+            </div>
+            <div class="mb-3">
+                <label for="autor" class="form-label">Autor</label>
+                <input type="text" class="form-control" id="autor" name="author" placeholder="ex. John R. R. Tolkien" th:value="${book.name}">
+            </div>
+            <div class="mb-3">
+                <label for="editorial" class="form-label">Precio</label>
+                <input type="text" class="form-control" id="editorial" name="price" placeholder="20.000" th:value="${book.price}">
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
     </div>
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
