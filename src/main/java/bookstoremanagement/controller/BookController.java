@@ -19,6 +19,7 @@ public class BookController {
     public String home() {
         return "home";
     }
+
     @GetMapping("/registro")
     public String registroLibro() {
         return "registroLibro";
@@ -52,6 +53,11 @@ public class BookController {
     public String editBook(@PathVariable ("id") Long idBook, BookModel bookModel) {
         service.update(idBook);
         return "editarLibro";
+    }
+
+    @GetMapping("/myBooks")
+    public String myBooks() {
+        return "myBooks";
     }
 
 }

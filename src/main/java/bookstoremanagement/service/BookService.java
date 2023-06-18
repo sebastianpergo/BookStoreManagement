@@ -2,6 +2,7 @@ package bookstoremanagement.service;
 
 import bookstoremanagement.entity.BookModel;
 import bookstoremanagement.repository.BookRepository;
+import bookstoremanagement.repository.myBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,7 +37,5 @@ public class BookService {
     public void delete(Long id) {
         repo.deleteById(id);
     }
-
-
 
 }

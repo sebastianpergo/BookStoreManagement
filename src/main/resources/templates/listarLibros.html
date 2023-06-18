@@ -18,7 +18,7 @@
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                     <a class="nav-link" href="registro">New</a>
                     <a class="nav-link" href="listar">Available Books</a>
-                    <a class="nav-link" href="">My Books</a>
+                    <a class="nav-link" href="myBooks">My Books</a>
                 </div>
             </div>
         </div>
@@ -43,8 +43,9 @@
                 <td th:text="${b.author}"></td>
                 <td th:text="${bprice}"></td>
                 <td>
-                    <a class="btn btn-primary" th:href="@{/edit/{id}(id=${b.idBook})}" role="button">Editar</a>
-                    <a class="btn btn-danger" th:href="@{/delete/{id}(id=${b.idBook})}" role="button">Eliminar</a>
+                    <a class="btn btn-light" href="myBooks" role="button">❤️</a>
+                    <a class="btn btn-light" th:href="@{/edit/{id}(id=${b.idBook})}" role="button">✏️</a>
+                    <a class="btn btn-light" th:href="@{/delete/{id}(id=${b.idBook})}" role="button">🗙</a>
                 </td>
             </tr>
             </tbody>
