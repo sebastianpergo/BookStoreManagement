@@ -63,7 +63,7 @@ public class BookController {
         BookModel book = bookService.getBookById(idMyBook);
         myBookModel mb = new myBookModel(book.getIdBook(), book.getIdBook(), book.getTitle(), book.getAuthor(),book.getPrice());
         myBookService.save(mb);
-        return "myBooks";
+        return "redirect:/myBooks";
     }
 
     @GetMapping("/myBooks")
