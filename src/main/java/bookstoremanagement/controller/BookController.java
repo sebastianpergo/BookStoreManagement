@@ -62,8 +62,17 @@ public class BookController {
     public String getMyList(@PathVariable ("id") Long idMyBook) {
         BookModel book = bookService.getBookById(idMyBook);
         myBookModel mb = new myBookModel(book.getIdBook(), book.getIdBook(), book.getTitle(), book.getAuthor(),book.getPrice());
-        myBookService.save(mb);
-        return "redirect:/myBooks";
+        // Comparar si el libro ya existe en la lista
+        List<myBookModel> list = myBookService.getMyBooks();
+        for (myBookModel myBookModel : list) {
+            if (myBookModel.getIdBook() == mb.getIdBook()) {
+                return "redirect:/myBooks";
+            }else{
+                myBookService.save(mb);
+                return "redirect:/myBooks";
+            }
+        }
+        return "";
     }
 
     @GetMapping("/myBooks")
