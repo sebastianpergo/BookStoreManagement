@@ -6,6 +6,7 @@ import bookstoremanagement.service.BookService;
 import bookstoremanagement.service.myBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -49,11 +50,11 @@ public class BookController {
     }
 
     @RequestMapping("/edit/{id}")
-    public String editBook(@PathVariable ("id") Long idBook, BookModel bookModel) {
-        bookService.update(idBook);
+    public String update(@PathVariable ("id") Long idMyBook, Model model) {
+        myBookModel book = myBookService.getBookById(idMyBook);
+        model.addAttribute("book", book);
         return "editarLibro";
     }
-
     //  -------------------  //
 
     // Get all the books
@@ -61,7 +62,6 @@ public class BookController {
     public String getMyList(@PathVariable ("id") Long idMyBook) {
         BookModel book = bookService.getBookById(idMyBook);
         myBookModel mb = new myBookModel(book.getIdBook(), book.getIdBook(), book.getTitle(), book.getAuthor(),book.getPrice());
-        String message;
         myBookService.save(mb);
         return "myBooks";
     }

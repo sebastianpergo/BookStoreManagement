@@ -24,19 +24,21 @@
         </div>
     </nav>
     <div class="container my-5 p-5" style="border: 1px solid black">
-        <form action="/save" method="post" class="col-md-4 offset-md-4" th:object="${book}">
+        <form th:action="@{/save}" method="post" class="col-md-4 offset-md-4" th:object="${book}">
             <h4>Registro de Libros</h4>
+            <input type="hidden" name="idMyBook" th:value="${book.idMyBook}">
+            <input type="hidden" name="idBook" th:value="${book.idBook}">
             <div class="mb-3">
-                <label for="titulo" class="form-label">Titulo</label>
-                <input type="text" class="form-control" id="titulo" name="title" placeholder="ex. El Señor de los Anillos" th:value="${book.title}">
+                <label for="title" class="form-label">Titulo</label>
+                <input type="text" class="form-control" name="title" th:value="${book.title}">
             </div>
             <div class="mb-3">
-                <label for="autor" class="form-label">Autor</label>
-                <input type="text" class="form-control" id="autor" name="author" placeholder="ex. John R. R. Tolkien" th:value="${book.name}">
+                <label for="author" class="form-label">Autor</label>
+                <input type="text" class="form-control" name="author" th:value="${book.author}">
             </div>
             <div class="mb-3">
-                <label for="editorial" class="form-label">Precio</label>
-                <input type="text" class="form-control" id="editorial" name="price" placeholder="20.000" th:value="${book.price}">
+                <label for="price" class="form-label">Precio</label>
+                <input type="text" class="form-control" name="price" th:value="${book.price}">
             </div>
             <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
