@@ -29,23 +29,19 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Id</th>
                 <th scope="col">Titulo</th>
                 <th scope="col">Autor</th>
-                <th scope="col">Libroo</th>
-                <th scope="col">Acciones</th>
+                <th scope="col">Precio</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="b  :${BookModel}">
-                <th scope="row"></th>
+            <tr th:each="b:${myBookModel}">
+                <th th:text="${b.idMyBook}"></th>
                 <td th:text="${b.idBook}"></td>
                 <td th:text="${b.title}"></td>
                 <td th:text="${b.author}"></td>
-                <td th:text="${bprice}"></td>
-                <td>
-                    <a class="btn btn-primary" th:href="@{/edit/{id}(id=${b.idBook})}" role="button">Editar</a>
-                    <a class="btn btn-danger" th:href="@{/delete/{id}(id=${b.idBook})}" role="button">Eliminar</a>
-                </td>
+                <td th:text="${b.price}"></td>
             </tr>
             </tbody>
         </table>

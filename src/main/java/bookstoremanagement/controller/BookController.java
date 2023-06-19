@@ -1,7 +1,9 @@
 package bookstoremanagement.controller;
 
 import bookstoremanagement.entity.BookModel;
+import bookstoremanagement.entity.myBookModel;
 import bookstoremanagement.service.BookService;
+import bookstoremanagement.service.myBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +15,10 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    private BookService service;
+    private BookService bookService;
+
+    @Autowired
+    private myBookService myBookService;
 
     @GetMapping("/")
     public String home() {
@@ -27,37 +32,44 @@ public class BookController {
 
     @GetMapping("/listar")
     public ModelAndView listBooks() {
-       List<BookModel> list = service.getBooks();
+       List<BookModel> list = bookService.getBooks();
        return new ModelAndView("listarLibros", "BookModel", list);
     }
 
     @PostMapping("/save")
     public String addBook(BookModel bookModel) {
-        service.save(bookModel);
+        bookService.save(bookModel);
         return "redirect:/listar";
     }
 
-    /*
-    @GetMapping("/listBooks")
-    public List<BookModel> findAll() {
-        return service.getBooks();
-    }
-*/
     @RequestMapping("/delete/{id}")
     public String deleteBook(@PathVariable ("id") Long idBook) {
-        service.delete(idBook);
+        bookService.delete(idBook);
         return "redirect:/listar";
     }
 
     @RequestMapping("/edit/{id}")
     public String editBook(@PathVariable ("id") Long idBook, BookModel bookModel) {
-        service.update(idBook);
+        bookService.update(idBook);
         return "editarLibro";
     }
 
-    @GetMapping("/myBooks")
-    public String myBooks() {
+    //  -------------------  //
+
+    // Get all the books
+    @RequestMapping("/myBooks/{id}")
+    public String getMyList(@PathVariable ("id") Long idMyBook) {
+        BookModel book = bookService.getBookById(idMyBook);
+        myBookModel mb = new myBookModel(book.getIdBook(), book.getIdBook(), book.getTitle(), book.getAuthor(),book.getPrice());
+        String message;
+        myBookService.save(mb);
         return "myBooks";
+    }
+
+    @GetMapping("/myBooks")
+    public ModelAndView listMyBooks() {
+        List<myBookModel> list = myBookService.getMyBooks();
+        return new ModelAndView("myBooks", "myBookModel", list);
     }
 
 }
